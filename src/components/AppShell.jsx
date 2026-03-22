@@ -4,12 +4,14 @@ import TabBar from './TabBar';
 import Dashboard from '../pages/Dashboard';
 import Nonprofits from '../pages/Nonprofits';
 import Activity from '../pages/Activity';
+import Share from '../pages/Share';
 import Settings from '../pages/Settings';
 
 const PAGES = {
   dashboard: Dashboard,
   nonprofits: Nonprofits,
   activity: Activity,
+  share: Share,
   settings: Settings,
 };
 

@@ -1,5 +1,6 @@
 // Each nonprofit has a `brand` object that white-labels the entire app when selected.
 // brand.primary / brand.secondary drive CSS custom properties app-wide.
+// logoUrl uses Clearbit Logo API for real brand marks.
 export const NONPROFITS = [
   {
     id: 'bgca',
@@ -8,6 +9,7 @@ export const NONPROFITS = [
     category: 'Youth Development',
     categoryColor: '#003865',
     logo: '🏀',
+    logoUrl: 'https://logo.clearbit.com/bgca.org',
     raised: 3841209,
     donors: 112340,
     impact: '4.3M youth served at 5,000+ club locations',
@@ -34,6 +36,7 @@ export const NONPROFITS = [
     category: 'Environment',
     categoryColor: '#10b981',
     logo: '🐼',
+    logoUrl: 'https://logo.clearbit.com/worldwildlife.org',
     raised: 2847392,
     donors: 84203,
     impact: 'Protected 50M+ acres of critical habitat',
@@ -60,6 +63,7 @@ export const NONPROFITS = [
     category: 'Healthcare',
     categoryColor: '#6366f1',
     logo: '🏥',
+    logoUrl: 'https://logo.clearbit.com/stjude.org',
     raised: 5104821,
     donors: 142601,
     impact: '85%+ childhood cancer survival rate achieved',
@@ -86,6 +90,7 @@ export const NONPROFITS = [
     category: 'Food Security',
     categoryColor: '#f59e0b',
     logo: '🌾',
+    logoUrl: 'https://logo.clearbit.com/feedingamerica.org',
     raised: 3219084,
     donors: 98740,
     impact: '5.2B meals provided last year',
@@ -112,6 +117,7 @@ export const NONPROFITS = [
     category: 'Housing',
     categoryColor: '#8b5cf6',
     logo: '🏠',
+    logoUrl: 'https://logo.clearbit.com/habitat.org',
     raised: 1893021,
     donors: 61204,
     impact: '70,000+ homes built globally last year',
@@ -138,6 +144,7 @@ export const NONPROFITS = [
     category: 'Education',
     categoryColor: '#0ea5e9',
     logo: '📚',
+    logoUrl: 'https://logo.clearbit.com/khanacademy.org',
     raised: 2104830,
     donors: 74920,
     impact: '150M+ learners reached worldwide',
@@ -164,6 +171,7 @@ export const NONPROFITS = [
     category: 'Disaster Relief',
     categoryColor: '#dc2626',
     logo: '🔴',
+    logoUrl: 'https://logo.clearbit.com/redcross.org',
     raised: 4830124,
     donors: 163400,
     impact: '13.6M meals served during disasters',
@@ -190,6 +198,7 @@ export const NONPROFITS = [
     category: 'Healthcare',
     categoryColor: '#6366f1',
     logo: '🩺',
+    logoUrl: 'https://logo.clearbit.com/msf.org',
     raised: 3021093,
     donors: 91230,
     impact: '10M+ patients treated last year',
@@ -216,6 +225,7 @@ export const NONPROFITS = [
     category: 'Civil Rights',
     categoryColor: '#ef4444',
     logo: '⚖️',
+    logoUrl: 'https://logo.clearbit.com/aclu.org',
     raised: 1402033,
     donors: 53801,
     impact: '2,000+ legal cases filed last year',
@@ -251,7 +261,7 @@ export const CATEGORIES = [
 
 // Default white-label brand (before any cause is chosen)
 export const DEFAULT_BRAND = {
-  appName: 'SpareChange',
+  appName: 'PocketChange',
   tagline: 'Give with every purchase',
   primary: '#f97316',
   secondary: '#fbbf24',

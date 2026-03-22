@@ -15,7 +15,7 @@ const SLIDES = [
         </div>
       </div>
     ),
-    title: 'Welcome to\nSpareChange',
+    title: 'Welcome to\nPocketChange',
     subtitle: 'Turn everyday purchases into\nimpactful donations — automatically.',
     cta: 'Get Started',
   },

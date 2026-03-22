@@ -4,6 +4,7 @@ import { Search, Star, Users, X, CheckCircle } from 'lucide-react';
 import { useApp } from '../store/AppContext';
 import { useTheme } from '../store/ThemeContext';
 import { NONPROFITS, CATEGORIES } from '../data/nonprofits';
+import OrgLogo from '../components/OrgLogo';
 
 function NonprofitDetail({ nonprofit, onClose, onSelect, isSelected }) {
   return (
@@ -25,8 +26,8 @@ function NonprofitDetail({ nonprofit, onClose, onSelect, isSelected }) {
         >
           <X size={16} className="text-white" />
         </button>
-        <span className="text-6xl mb-2">{nonprofit.logo}</span>
-        <span className="text-white/80 text-xs font-semibold uppercase tracking-widest">{nonprofit.category}</span>
+        <OrgLogo nonprofit={nonprofit} size={18} rounded="3xl" className="mb-2 shadow-lg" />
+        <span className="text-white/80 text-xs font-semibold uppercase tracking-widest mt-2">{nonprofit.category}</span>
       </div>
 
       <div className="flex-1 scrollable px-5 py-5 pb-32">
@@ -102,15 +103,10 @@ function NonprofitCard({ nonprofit, onPress, isSelected, brand }) {
       }`}
       style={isSelected ? { '--tw-ring-color': nonprofit.brand.primary } : {}}
     >
-      <div
-        className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl shrink-0"
-        style={{ background: nonprofit.brand.accentLight }}
-      >
-        {nonprofit.logo}
-      </div>
+      <OrgLogo nonprofit={nonprofit} size={14} rounded="2xl" className="shrink-0" />
       <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2">
-          <p className="font-bold text-gray-900 text-sm truncate">{nonprofit.name}</p>
+        <div className="flex items-start gap-2">
+          <p className="font-bold text-gray-900 text-sm leading-snug">{nonprofit.name}</p>
           {nonprofit.featured && (
             <span className="text-xs font-semibold px-2 py-0.5 rounded-full shrink-0"
               style={{ background: nonprofit.brand.accentLight, color: nonprofit.brand.primary }}>
@@ -176,6 +172,47 @@ export default function Nonprofits() {
           />
         </div>
       </motion.div>
+
+      {/* Featured cause of the month */}
+      {!search && activeCategory === 'all' && (
+        <div className="bg-white px-5 pt-3 pb-1">
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-widest mb-2">⭐ Cause of the Month</p>
+          <motion.div
+            whileTap={{ scale: 0.98 }}
+            onClick={() => setDetail(NONPROFITS.find(n => n.id === 'bgca'))}
+            className="rounded-3xl overflow-hidden mb-3 cursor-pointer"
+            style={{ background: 'linear-gradient(135deg, #003865, #001a33)' }}
+          >
+            <div className="p-4 flex items-center gap-3">
+              <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center text-3xl shrink-0">🏀</div>
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-bold text-sm leading-snug">Boys & Girls Clubs of America</p>
+                <p className="text-white/70 text-xs mt-0.5">4.3M youth served annually</p>
+                <div className="mt-1.5 flex items-center gap-1.5">
+                  <div className="h-1.5 flex-1 rounded-full bg-white/20 overflow-hidden">
+                    <div className="h-full rounded-full bg-white" style={{ width: '73%' }} />
+                  </div>
+                  <p className="text-white/70 text-xs shrink-0">73% to goal</p>
+                </div>
+              </div>
+              <div className="shrink-0 bg-white/20 rounded-xl px-3 py-1.5">
+                <p className="text-white text-xs font-bold">View</p>
+              </div>
+            </div>
+            <div className="bg-white/10 px-4 py-2.5 flex gap-4">
+              {[
+                { label: 'This month', value: '$47,291 raised' },
+                { label: 'Supporters', value: '1,204 donors' },
+              ].map(s => (
+                <div key={s.label}>
+                  <p className="text-white/50 text-xs">{s.label}</p>
+                  <p className="text-white text-xs font-semibold">{s.value}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       {/* Category chips */}
       <div className="bg-white px-5 py-3 border-b border-gray-100">
