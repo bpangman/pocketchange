@@ -356,7 +356,6 @@ export default function Settings() {
             <h1 className="text-2xl font-bold text-white" style={{ letterSpacing: '-0.3px' }}>Settings</h1>
             <p className="text-white/70 text-sm mt-0.5">{brand.appName}</p>
           </div>
-          <CoinLogo size={48} animate={false} showName={false} />
         </div>
       </motion.div>
 
