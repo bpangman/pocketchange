@@ -50,9 +50,14 @@ export async function runDailyRoundups() {
       );
 
       // Calculate and save round-ups for each new transaction
+      // Capture the user's current cause — this is what gets locked onto each round-up.
+      // If the user switches cause mid-month, only NEW round-ups get the new cause.
+      // Round-ups already in the DB keep their original cause_org_id.
+      const user = db.prepare(`SELECT cause_org_id FROM users WHERE id = ?`).get(conn.user_id);
+
       const insertRoundup = db.prepare(`
-        INSERT OR IGNORE INTO roundups (id, user_id, plaid_txn_id, merchant, amount, roundup, date)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT OR IGNORE INTO roundups (id, user_id, plaid_txn_id, merchant, amount, roundup, date, cause_org_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
       `);
 
       let newRoundups = 0;
@@ -70,7 +75,8 @@ export async function runDailyRoundups() {
           txn.merchant_name ?? txn.name,
           txn.amount,
           roundup,
-          txn.date
+          txn.date,
+          user.cause_org_id   // locked at time of accumulation, not at charge time
         );
         if (result.changes > 0) newRoundups++;
       }

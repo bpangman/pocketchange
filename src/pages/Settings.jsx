@@ -451,6 +451,11 @@ export default function Settings() {
             onPress={() => setTab('nonprofits')}
             right={<span className="text-xs font-semibold shrink-0" style={{ color: brand.primary }}>Change</span>}
           />
+          <div className="px-4 pb-3.5">
+            <p className="text-gray-400 text-xs leading-relaxed">
+              Round-ups already accumulated this month stay with your current cause. Only new round-ups go to your new cause.
+            </p>
+          </div>
         </motion.div>
 
         {/* Preferences */}

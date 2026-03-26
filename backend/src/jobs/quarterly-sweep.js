@@ -50,24 +50,27 @@ export async function runQuarterlySweep() {
     await sweepToEndaoment(balanceCents, disbursementId);
     console.log(`[quarterly-sweep] Swept $${balanceDollars} to Endaoment bank account`);
 
-    // Step 2: Calculate each nonprofit's share
-    // Sum net donations per org for the quarter (only succeeded charges)
+    // Step 2: Calculate each nonprofit's share.
+    // IMPORTANT: group by roundup.cause_org_id (the cause at time of accumulation),
+    // NOT users.cause_org_id (current cause). This ensures mid-month cause switches
+    // are handled correctly — round-ups already logged keep their original cause.
     const orgTotals = db.prepare(`
       SELECT
-        u.cause_org_id,
-        SUM(mc.net_amount) as total_net
-      FROM monthly_charges mc
-      JOIN users u ON mc.user_id = u.id
+        r.cause_org_id,
+        SUM(r.roundup) as total_roundup
+      FROM roundups r
+      JOIN monthly_charges mc ON r.included_in = mc.id
       WHERE mc.status = 'succeeded'
         AND mc.period LIKE ?
-      GROUP BY u.cause_org_id
+      GROUP BY r.cause_org_id
     `).all(`${getQuarterMonthPattern(period)}%`);
 
-    const grandTotal = orgTotals.reduce((sum, r) => sum + r.total_net, 0);
+    const grandTotal = orgTotals.reduce((sum, r) => sum + r.total_roundup, 0);
 
-    // Step 3: Submit a grant to Endaoment for each nonprofit (proportional split)
+    // Step 3: Submit a grant to Endaoment for each nonprofit.
+    // Each org gets its exact proportional share of the Treasury balance.
     for (const org of orgTotals) {
-      const share = (org.total_net / grandTotal) * balanceDollars;
+      const share = (org.total_roundup / grandTotal) * balanceDollars;
       const grantAmount = Math.floor(share * 100) / 100; // round down to avoid overdraft
 
       if (grantAmount < 1.00) {

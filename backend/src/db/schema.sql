@@ -47,6 +47,9 @@ CREATE TABLE IF NOT EXISTS roundups (
   amount          REAL NOT NULL,             -- original purchase amount
   roundup         REAL NOT NULL,             -- ceiling(amount) - amount
   date            TEXT NOT NULL,             -- YYYY-MM-DD
+  cause_org_id    TEXT NOT NULL,             -- cause active at time of accumulation
+                                             -- IMPORTANT: cause switches only affect future
+                                             -- round-ups, not ones already logged here
   included_in     TEXT,                      -- monthly_charges.id once swept
   created_at      INTEGER DEFAULT (unixepoch())
 );
