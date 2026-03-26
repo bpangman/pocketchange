@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Star, Users, X, CheckCircle } from 'lucide-react';
 import { useApp } from '../store/AppContext';
@@ -182,6 +182,18 @@ export default function Nonprofits() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [search, setSearch] = useState('');
   const [detail, setDetail] = useState(null);
+  const [switchToast, setSwitchToast] = useState(null); // { name, emoji }
+  const toastTimer = useRef(null);
+
+  function handleCauseSelect(np) {
+    const isChange = selectedNonprofit && selectedNonprofit.id !== np.id;
+    setSelectedNonprofit(np);
+    if (isChange) {
+      clearTimeout(toastTimer.current);
+      setSwitchToast({ name: np.name, emoji: np.logo ?? '🌟' });
+      toastTimer.current = setTimeout(() => setSwitchToast(null), 4000);
+    }
+  }
 
   const filtered = NONPROFITS.filter(n => {
     const matchCat = activeCategory === 'all' || n.category === activeCategory;
@@ -310,9 +322,31 @@ export default function Nonprofits() {
           <NonprofitDetail
             nonprofit={detail}
             onClose={() => setDetail(null)}
-            onSelect={setSelectedNonprofit}
+            onSelect={handleCauseSelect}
             isSelected={selectedNonprofit.id === detail.id}
           />
+        )}
+      </AnimatePresence>
+
+      {/* Cause-switch toast */}
+      <AnimatePresence>
+        {switchToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 24 }}
+            transition={{ type: 'spring', damping: 22, stiffness: 300 }}
+            className="absolute bottom-24 left-4 right-4 z-30 rounded-2xl px-4 py-3 flex items-start gap-3"
+            style={{ background: '#1f2937', boxShadow: '0 4px 20px rgba(0,0,0,0.35)' }}
+          >
+            <span className="text-2xl leading-none mt-0.5">{switchToast.emoji}</span>
+            <div>
+              <p className="text-white font-bold text-sm">{switchToast.name} starts tomorrow</p>
+              <p className="text-gray-400 text-xs mt-0.5 leading-relaxed">
+                Today's round-ups still go to your previous cause. The switch takes effect at midnight.
+              </p>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

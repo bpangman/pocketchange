@@ -88,8 +88,10 @@ app.use('/api/users', userRoutes);
 app.get('/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
 
 // ── Scheduled Jobs ────────────────────────────────────────────────────────────
-// Daily at 2am: fetch new transactions and calculate round-ups
-cron.schedule('0 2 * * *', () => {
+// Daily at 12:01am: apply pending cause changes and fetch new transactions.
+// Must run at midnight so cause switches take effect on the correct calendar day —
+// transactions from 12:01am onward get the new cause, not the old one.
+cron.schedule('1 0 * * *', () => {
   runDailyRoundups().catch(err => console.error('[cron] daily-roundups failed:', err));
 });
 
