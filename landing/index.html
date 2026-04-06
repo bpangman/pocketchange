@@ -596,26 +596,48 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Waitlist form — mailto fallback (no backend)
-  document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+  // Waitlist form — POST to Google Apps Script → Google Sheets
+  const WAITLIST_API = 'https://script.google.com/macros/s/AKfycbydr1Wy0oN2HrSDwMY7oufTfEaexB4fxa_MH053he6uWUmhN0swj8WAuSSL3aKVO6Lu/exec';
+
+  document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const email = document.getElementById('waitlist-email').value;
-    // Store in localStorage as simple waitlist tracking
-    const list = JSON.parse(localStorage.getItem('pc-waitlist') || '[]');
-    list.push({ email, ts: new Date().toISOString() });
-    localStorage.setItem('pc-waitlist', JSON.stringify(list));
-    // Show success
-    this.style.display = 'none';
-    document.getElementById('waitlist-success').style.display = 'block';
-    document.querySelector('.waitlist-note').style.display = 'none';
-    // Also open mailto so Blake gets notified
-    const subject = encodeURIComponent('PocketCache Waitlist Signup');
-    const body = encodeURIComponent('New waitlist signup: ' + email);
+    const email = document.getElementById('waitlist-email').value.trim();
+    const btn = this.querySelector('button[type="submit"]');
+    const origText = btn.textContent;
+    btn.textContent = 'Joining…';
+    btn.disabled = true;
+
+    // Always send ntfy notification
     fetch('https://ntfy.sh/pocketcache-waitlist', {
       method: 'POST',
       body: 'New PocketCache waitlist signup: ' + email,
       headers: { 'Title': 'PocketCache Waitlist' }
     }).catch(() => {});
+
+    try {
+      const res = await fetch(WAITLIST_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const data = await res.json();
+      // Store locally as backup regardless
+      const list = JSON.parse(localStorage.getItem('pc-waitlist') || '[]');
+      list.push({ email, ts: new Date().toISOString() });
+      localStorage.setItem('pc-waitlist', JSON.stringify(list));
+    } catch (err) {
+      // Store locally if sheet POST fails
+      const list = JSON.parse(localStorage.getItem('pc-waitlist') || '[]');
+      list.push({ email, ts: new Date().toISOString(), fallback: true });
+      localStorage.setItem('pc-waitlist', JSON.stringify(list));
+    }
+
+    // Show success regardless — never block UX on network
+    this.style.display = 'none';
+    document.getElementById('waitlist-success').style.display = 'block';
+    document.querySelector('.waitlist-note').style.display = 'none';
+    btn.textContent = origText;
+    btn.disabled = false;
   });
 </script>
 </body>
