@@ -596,8 +596,9 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Waitlist form — POST to Google Apps Script → Google Sheets
-  const WAITLIST_API = 'https://script.google.com/macros/s/AKfycbydr1Wy0oN2HrSDwMY7oufTfEaexB4fxa_MH053he6uWUmhN0swj8WAuSSL3aKVO6Lu/exec';
+  // Waitlist form — POST to Cortana Dashboard relay → Google Sheets
+  // Cortana Dashboard runs locally; tunnel URL is updated by tunnel.sh on each restart.
+  const WAITLIST_API = 'https://significance-introductory-universities-intervals.trycloudflare.com/api/waitlist';
 
   document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -607,7 +608,7 @@
     btn.textContent = 'Joining…';
     btn.disabled = true;
 
-    // Always send ntfy notification
+    // Always send ntfy notification (primary capture — works even if relay is unreachable)
     fetch('https://ntfy.sh/pocketcache-waitlist', {
       method: 'POST',
       body: 'New PocketCache waitlist signup: ' + email,
@@ -626,7 +627,7 @@
       list.push({ email, ts: new Date().toISOString() });
       localStorage.setItem('pc-waitlist', JSON.stringify(list));
     } catch (err) {
-      // Store locally if sheet POST fails
+      // ntfy already fired — store locally as additional backup
       const list = JSON.parse(localStorage.getItem('pc-waitlist') || '[]');
       list.push({ email, ts: new Date().toISOString(), fallback: true });
       localStorage.setItem('pc-waitlist', JSON.stringify(list));
