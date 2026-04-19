@@ -843,6 +843,240 @@
     </div>
   </div>
 
+  <!-- ── Fee Model Analysis ── -->
+  <div>
+    <div class="section-label">Fee Model Analysis</div>
+    <div class="card narrative">
+
+      <p>Two-tier service fee model — Card users pay 10%, ACH users pay 5%, both with $2 minimum and $5 cap. 100% of donations go to charity through Endaoment; the service fee is a separate charge covering operating costs.</p>
+
+      <!-- Cost Stack -->
+      <div class="step-header">Cost Stack (per transaction / per user)</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:0.75rem 0 0.5rem;">
+        <div style="background:var(--gray-50);border-radius:0.75rem;padding:1rem 1.1rem;">
+          <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:0.6rem;">Per-transaction / per-user</div>
+          <div style="font-size:0.82rem;line-height:1.8;color:var(--gray-700);">
+            <div><strong>Plaid:</strong> $0.30/mo per linked account</div>
+            <div><strong>Plaid Link:</strong> $1.50 one-time per new user</div>
+            <div><strong>Endaoment:</strong> 1.5% of donation (0.5% in + 1.0% out)</div>
+            <div><strong>Stripe on your fee:</strong> 2.9% + $0.30 per charge</div>
+            <div><strong>Stripe on donation (Card):</strong> 2.9% + $0.30 — TBD</div>
+            <div><strong>Stripe on donation (ACH):</strong> 0.8% (no fixed fee)</div>
+          </div>
+        </div>
+        <div style="background:var(--gray-50);border-radius:0.75rem;padding:1rem 1.1rem;">
+          <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:0.6rem;">Fixed / annual</div>
+          <div style="font-size:0.82rem;line-height:1.8;color:var(--gray-700);">
+            <div><strong>WI LLC:</strong> $25/yr</div>
+            <div><strong>Domain:</strong> ~$20/yr</div>
+            <div><strong>Apple Developer:</strong> $99/yr</div>
+            <div><strong>Found bank:</strong> Free</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="amber-box" style="margin:0.75rem 0 1.25rem;">
+        <strong>Plaid Startup Credits:</strong> Plaid offers startups up to $500/mo in free API credits for 6 months (up to $21,000 total). First ~6 months of Plaid usage could be free. Pay-as-you-go has no monthly minimum.
+      </div>
+
+      <!-- Card table -->
+      <div class="step-header">Card Payments — 10% fee ($2 min, $5 cap)</div>
+      <table class="compare-table" style="margin:0.75rem 0 0.4rem;">
+        <thead>
+          <tr>
+            <th>Round-Up</th>
+            <th>Fee Charged</th>
+            <th>You Keep</th>
+            <th>Your Costs</th>
+            <th>Profit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>$5</td><td>$2.00 (min)</td><td>$1.64</td><td>$0.82</td><td style="color:var(--green);font-weight:700;">+$0.82</td></tr>
+          <tr><td>$10</td><td>$2.00 (min)</td><td>$1.64</td><td>$1.04</td><td style="color:var(--green);font-weight:700;">+$0.60</td></tr>
+          <tr><td>$15</td><td>$2.00 (min)</td><td>$1.64</td><td>$1.26</td><td style="color:var(--green);font-weight:700;">+$0.38</td></tr>
+          <tr><td>$20</td><td>$2.00 (=10%)</td><td>$1.64</td><td>$1.48</td><td style="color:var(--green);font-weight:700;">+$0.16</td></tr>
+          <tr><td>$25</td><td>$2.50 (10%)</td><td>$2.13</td><td>$1.70</td><td style="color:var(--green);font-weight:700;">+$0.43</td></tr>
+          <tr><td>$35</td><td>$3.50 (10%)</td><td>$3.10</td><td>$2.14</td><td style="color:var(--green);font-weight:700;">+$0.96</td></tr>
+          <tr><td>$50</td><td>$5.00 (cap)</td><td>$4.55</td><td>$2.80</td><td style="color:var(--green);font-weight:700;">+$1.75</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.78rem;color:var(--gray-500);margin-bottom:1.25rem;">You Keep = Fee minus Stripe's 2.9% + $0.30. Costs = Plaid $0.30 + Endaoment 1.5% + Stripe card fee (2.9% + $0.30). <strong>Profitable at every amount thanks to the $2 minimum.</strong></p>
+
+      <!-- ACH table -->
+      <div class="step-header">ACH Payments — 5% fee ($2 min, $5 cap)</div>
+      <table class="compare-table" style="margin:0.75rem 0 0.4rem;">
+        <thead>
+          <tr>
+            <th>Round-Up</th>
+            <th>Fee Charged</th>
+            <th>You Keep</th>
+            <th>Your Costs</th>
+            <th>Profit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>$5</td><td>$2.00 (min)</td><td>$1.64</td><td>$0.42</td><td style="color:var(--green);font-weight:700;">+$1.22</td></tr>
+          <tr><td>$10</td><td>$2.00 (min)</td><td>$1.64</td><td>$0.53</td><td style="color:var(--green);font-weight:700;">+$1.11</td></tr>
+          <tr><td>$15</td><td>$2.00 (min)</td><td>$1.64</td><td>$0.65</td><td style="color:var(--green);font-weight:700;">+$0.99</td></tr>
+          <tr><td>$20</td><td>$2.00 (min)</td><td>$1.64</td><td>$0.76</td><td style="color:var(--green);font-weight:700;">+$0.88</td></tr>
+          <tr><td>$25</td><td>$2.00 (min)</td><td>$1.64</td><td>$0.88</td><td style="color:var(--green);font-weight:700;">+$0.76</td></tr>
+          <tr><td>$35</td><td>$2.00 (min)</td><td>$1.64</td><td>$1.11</td><td style="color:var(--green);font-weight:700;">+$0.53</td></tr>
+          <tr><td>$50</td><td>$2.50 (5%)</td><td>$2.13</td><td>$1.45</td><td style="color:var(--green);font-weight:700;">+$0.68</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.78rem;color:var(--gray-500);margin-bottom:1.25rem;">ACH $2 min covers most users (kicks in under $40). Costs much lower without the $0.30 fixed Stripe card fee on donations. <strong>ACH is significantly more profitable — consider nudging users toward ACH as the default.</strong></p>
+
+      <!-- 6-Month Projection -->
+      <div class="step-header">6-Month Projection</div>
+      <p style="font-size:0.82rem;color:var(--gray-500);margin:0.4rem 0 0.75rem;">Assumptions: Growth 50→100→175→275→400→500 users. 60% card / 40% ACH. Avg round-up $22/mo. Plaid: $1.50/new user + $0.30/mo/user.</p>
+
+      <table class="compare-table" style="margin:0.75rem 0 0.4rem;">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Users</th>
+            <th>New Users</th>
+            <th>W/O Credits</th>
+            <th>W/ Credits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>50</td><td>50</td><td style="color:var(--red);">-$50</td><td style="color:var(--green);font-weight:700;">+$40</td></tr>
+          <tr><td>2</td><td>100</td><td>50</td><td style="color:var(--red);">-$26</td><td style="color:var(--green);font-weight:700;">+$80</td></tr>
+          <tr><td>3</td><td>175</td><td>75</td><td style="color:var(--red);">-$26</td><td style="color:var(--green);font-weight:700;">+$139</td></tr>
+          <tr><td>4</td><td>275</td><td>100</td><td style="color:var(--red);">-$14</td><td style="color:var(--green);font-weight:700;">+$219</td></tr>
+          <tr><td>5</td><td>400</td><td>125</td><td style="color:var(--green);font-weight:700;">+$11</td><td style="color:var(--green);font-weight:700;">+$318</td></tr>
+          <tr><td>6</td><td>500</td><td>100</td><td style="color:var(--green);font-weight:700;">+$98</td><td style="color:var(--green);font-weight:700;">+$398</td></tr>
+          <tr style="background:var(--gray-100);font-weight:700;">
+            <td>TOTAL</td><td>500</td><td>500</td>
+            <td style="color:var(--amber);">-$7</td>
+            <td style="color:var(--green);">+$1,193</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- SVG Bar Chart — cumulative profit/loss W/ and W/O credits -->
+      <div style="margin:1.25rem 0 0.4rem;">
+        <div style="font-size:0.75rem;font-weight:700;color:var(--gray-500);margin-bottom:0.5rem;text-align:center;">Cumulative Monthly Profit — W/ Credits vs W/O Credits</div>
+        <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px;display:block;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;">
+          <!-- Grid lines -->
+          <line x1="60" y1="20" x2="60" y2="160" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="60" y1="160" x2="540" y2="160" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="60" y1="120" x2="540" y2="120" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="4,3"/>
+          <line x1="60" y1="80" x2="540" y2="80" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="4,3"/>
+          <line x1="60" y1="40" x2="540" y2="40" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="4,3"/>
+
+          <!-- Y-axis labels -->
+          <text x="55" y="164" text-anchor="end" font-size="9" fill="#9ca3af">$0</text>
+          <text x="55" y="124" text-anchor="end" font-size="9" fill="#9ca3af">+$300</text>
+          <text x="55" y="84" text-anchor="end" font-size="9" fill="#9ca3af">+$600</text>
+          <text x="55" y="44" text-anchor="end" font-size="9" fill="#9ca3af">+$900</text>
+
+          <!-- Month labels -->
+          <text x="113" y="178" text-anchor="middle" font-size="9" fill="#6b7280">Mo 1</text>
+          <text x="193" y="178" text-anchor="middle" font-size="9" fill="#6b7280">Mo 2</text>
+          <text x="273" y="178" text-anchor="middle" font-size="9" fill="#6b7280">Mo 3</text>
+          <text x="353" y="178" text-anchor="middle" font-size="9" fill="#6b7280">Mo 4</text>
+          <text x="433" y="178" text-anchor="middle" font-size="9" fill="#6b7280">Mo 5</text>
+          <text x="513" y="178" text-anchor="middle" font-size="9" fill="#6b7280">Mo 6</text>
+
+          <!-- Cumulative W/O Credits: -50, -76, -102, -116, -105, -7 -->
+          <!-- Clamp negatives to baseline (160). Scale: 160px = $1200 → 1px ≈ $7.5 -->
+          <!-- Mo1 cum=-50 (below 0, show at baseline) -->
+          <rect x="80" y="160" width="28" height="0" fill="#d97706" rx="3"/>
+          <!-- Mo2 cum=-76 -->
+          <rect x="160" y="160" width="28" height="0" fill="#d97706" rx="3"/>
+          <!-- Mo3 cum=-102 -->
+          <rect x="240" y="160" width="28" height="0" fill="#d97706" rx="3"/>
+          <!-- Mo4 cum=-116 -->
+          <rect x="320" y="160" width="28" height="0" fill="#d97706" rx="3"/>
+          <!-- Mo5 cum=-105, almost break-even -->
+          <rect x="400" y="158" width="28" height="2" fill="#d97706" rx="2"/>
+          <!-- Mo6 cum=-7 ≈ 1px above zero -->
+          <rect x="480" y="159" width="28" height="1" fill="#d97706" rx="1"/>
+
+          <!-- Cumulative W/ Credits: +40, +120, +259, +478, +796, +1194 -->
+          <!-- Scale: max ~1194, chart height 140px → 1px ≈ 8.53 -->
+          <!-- Mo1: 40 → 4.7px -->
+          <rect x="110" y="155" width="28" height="5" fill="#059669" rx="3"/>
+          <!-- Mo2: 120 → 14px -->
+          <rect x="190" y="146" width="28" height="14" fill="#059669" rx="3"/>
+          <!-- Mo3: 259 → 30px -->
+          <rect x="270" y="130" width="28" height="30" fill="#059669" rx="3"/>
+          <!-- Mo4: 478 → 56px -->
+          <rect x="350" y="104" width="28" height="56" fill="#059669" rx="3"/>
+          <!-- Mo5: 796 → 93px -->
+          <rect x="430" y="67" width="28" height="93" fill="#059669" rx="3"/>
+          <!-- Mo6: 1194 → 140px (full height) -->
+          <rect x="510" y="20" width="28" height="140" fill="#059669" rx="3"/>
+
+          <!-- Value labels on W/ Credits bars -->
+          <text x="124" y="151" text-anchor="middle" font-size="8" fill="#059669" font-weight="700">+$40</text>
+          <text x="204" y="142" text-anchor="middle" font-size="8" fill="#059669" font-weight="700">+$120</text>
+          <text x="284" y="126" text-anchor="middle" font-size="8" fill="#059669" font-weight="700">+$259</text>
+          <text x="364" y="100" text-anchor="middle" font-size="8" fill="#059669" font-weight="700">+$478</text>
+          <text x="444" y="63" text-anchor="middle" font-size="8" fill="#059669" font-weight="700">+$796</text>
+          <text x="524" y="16" text-anchor="middle" font-size="8" fill="#059669" font-weight="700">+$1,194</text>
+
+          <!-- Legend -->
+          <rect x="140" y="188" width="12" height="8" fill="#059669" rx="2"/>
+          <text x="156" y="196" font-size="9" fill="#6b7280">W/ Plaid Credits</text>
+          <rect x="270" y="188" width="12" height="8" fill="#d97706" rx="2"/>
+          <text x="286" y="196" font-size="9" fill="#6b7280">W/O Credits (near break-even)</text>
+        </svg>
+      </div>
+      <p style="font-size:0.75rem;color:var(--gray-400);text-align:center;margin-bottom:1.25rem;">Cumulative profit over 6 months. W/O credits ends at −$7 (near break-even). W/ credits ends at +$1,194.</p>
+
+      <!-- Why ACH -->
+      <div class="step-header">Why ACH Saves You Money</div>
+      <table class="compare-table" style="margin:0.75rem 0 0.4rem;">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Card (10% fee)</th>
+            <th>ACH (5% fee)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Your fee on $22</td><td>$2.20</td><td>$2.00 (min)</td></tr>
+          <tr><td>Stripe on donation</td><td>$0.94</td><td>$0.18</td></tr>
+          <tr><td>Your profit/user</td><td>$0.27</td><td style="color:var(--green);font-weight:700;">$0.84</td></tr>
+          <tr><td>Savings vs card</td><td>—</td><td style="color:var(--green);font-weight:700;">+$0.57/user/mo</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.78rem;color:var(--gray-500);margin-bottom:1.25rem;">At 500 users (40% ACH): ACH users save you <strong>$114/month</strong> compared to if they all paid by card. Default to ACH in the app. Framing: "Pay by bank and more of your money goes to charity" — true, because lower Stripe fees mean lower costs.</p>
+
+      <!-- Recommendation callout -->
+      <div style="background:var(--purple-light);border-left:3px solid var(--purple);border-radius:0.75rem;padding:1.1rem 1.25rem;margin-top:0.25rem;">
+        <div style="font-size:0.75rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--purple);margin-bottom:0.6rem;">PocketCache Service Fee Structure</div>
+        <div style="font-size:0.85rem;line-height:1.75;color:var(--gray-700);">
+          <div>• Card payments: <strong>10%</strong> ($2 min, $5 cap)</div>
+          <div>• ACH payments: <strong>5%</strong> ($2 min, $5 cap)</div>
+          <div style="margin-bottom:0.6rem;">• Default payment method: <strong>ACH</strong></div>
+
+          <div style="font-size:0.75rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--purple);margin:0.75rem 0 0.35rem;">What users see on their statement (example: $22 round-up, ACH)</div>
+          <div style="background:white;border-radius:0.5rem;padding:0.7rem 1rem;font-size:0.82rem;color:var(--gray-700);">
+            <div>$22.00 — <strong>PocketCache Donation</strong> (to charity via Endaoment)</div>
+            <div>$2.00 — <strong>PocketCache Service Fee</strong> (covers operating costs)</div>
+          </div>
+
+          <div style="font-size:0.75rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--purple);margin:0.85rem 0 0.35rem;">Key Action Items for Endaoment Call (Tue 4/21)</div>
+          <div>• Can Endaoment process donations directly (avoiding Stripe fees on donation)?</div>
+          <div>• Does Endaoment's API include nonprofit search (skip Change)?</div>
+          <div>• Is API access included in the 1.5% fee?</div>
+          <div style="margin-bottom:0.6rem;">• Can we structure as separate charges to minimize solicitation registration?</div>
+
+          <div style="border-top:1px solid rgba(124,58,237,0.2);padding-top:0.6rem;font-size:0.85rem;">
+            <strong>Bottom line:</strong> Model is sound. Worst case (no Plaid credits): near break-even over 6 months while building to 500 users. Best case (Plaid credits): net +$1,193. Push ACH to maximize margin.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ── User & Money Narrative ── -->
   <div>
     <div class="section-label">How It Works — User Flow & Money</div>
