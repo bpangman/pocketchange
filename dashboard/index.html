@@ -225,6 +225,44 @@
     .stack-name { font-weight: 700; font-size: 0.875rem; }
     .stack-role { font-size: 0.78rem; color: var(--gray-500); margin-top: 0.15rem; }
 
+    /* ── Comparison table ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin: 1rem 0;
+    }
+    .compare-table th {
+      background: var(--gray-100);
+      font-weight: 700;
+      padding: 0.6rem 0.85rem;
+      text-align: left;
+      border-bottom: 2px solid var(--gray-200);
+    }
+    .compare-table th:first-child { border-radius: 8px 0 0 0; }
+    .compare-table th:last-child { border-radius: 0 8px 0 0; }
+    .compare-table td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid var(--gray-100);
+      vertical-align: top;
+      line-height: 1.55;
+      color: var(--gray-700);
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:first-child { font-weight: 600; color: var(--gray-900); width: 28%; }
+
+    .amber-box {
+      background: var(--amber-light);
+      border-left: 3px solid var(--amber);
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--gray-700);
+    }
+    .amber-box strong { color: var(--amber); }
+
     /* ── Updated timestamp ── */
     .updated {
       font-size: 0.75rem;
@@ -714,6 +752,89 @@
     </div>
   </div>
 
+  <!-- ── Evolution Path — DIY State Registration ── -->
+  <div>
+    <div class="section-label">Evolution Path — DIY State Registration (Drop the DAF)</div>
+    <div class="card narrative">
+
+      <p>A potential next-step evolution: skip the DAF partnership entirely, register PocketCache directly as a charitable solicitor in the ~41 states that require it, and keep 100% of the savings from dropping DAF fees (~1.5% per donation). Trade-off: PocketCache takes on compliance + state renewal burden, but gains cost certainty and full control over the flow.</p>
+
+      <div class="step-header">Registration Landscape</div>
+      <div class="card" style="margin:0.75rem 0;padding:1rem 1.25rem;">
+        <div class="check-item" style="background:transparent;padding:0.4rem 0;">
+          <div class="check-text">
+            <div class="title">41 states + DC require charitable solicitation registration</div>
+          </div>
+        </div>
+        <div class="check-item" style="background:transparent;padding:0.4rem 0;">
+          <div class="check-text">
+            <div class="title">10 states are exempt — no registration required</div>
+            <div class="sub">AZ, DE, ID, IN, IA, MT, NE, SD, VT, WY</div>
+          </div>
+        </div>
+        <div class="check-item" style="background:transparent;padding:0.4rem 0;">
+          <div class="check-text">
+            <div class="title">A "launch in exempt states only" path is already listed in Cost-Saving Ideas #4 — this section covers the full 50-state path</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-header">Cost Summary</div>
+      <div class="money-box">
+        <div class="line"><span>Year 1 total (fees + surety bond premiums + legal help)</span><span>~$16,000–$25,000</span></div>
+        <div class="line"><span>Annual renewal</span><span>~$5,000–$10,000</span></div>
+        <div class="line"><span>Initial registration fees across all required states</span><span>~$8,500–$10,000</span></div>
+        <div class="line"><span>Total surety bonds (face value)</span><span>$700,000+</span></div>
+        <div class="line"><span>Annual surety bond premiums</span><span>~$7,000–$14,000/yr</span></div>
+        <div class="line divider"><span>Per-donation cost</span><span>Stripe only (~2.9% + $0.30)</span></div>
+      </div>
+
+      <div class="step-header">DIY vs Endaoment Comparison</div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>DIY (register yourself)</th>
+            <th>Endaoment (estimated)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Year 1 cost</td>
+            <td>$16K–$25K</td>
+            <td>$5K–$15K setup + $6K–$24K/yr platform fee</td>
+          </tr>
+          <tr>
+            <td>Annual renewal</td>
+            <td>$5K–$10K (fees + bond premiums)</td>
+            <td>$6K–$24K/yr platform fee</td>
+          </tr>
+          <tr>
+            <td>Per-donation cost</td>
+            <td>Stripe only (~2.9% + $0.30)</td>
+            <td>1.5% Endaoment + Stripe (~2.9% + $0.30)</td>
+          </tr>
+          <tr>
+            <td>Legal / compliance</td>
+            <td>PocketCache handles everything (lawyer fees extra)</td>
+            <td>Endaoment handles 501(c)(3) compliance and tax receipts</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="amber-box">
+        <strong>Takeaway:</strong> At scale, DIY registration has a lower per-donation cost — no DAF cut on every transaction. The economics flip around the mid-to-high end of Endaoment's estimated platform fees. Worth re-evaluating after the 4/21 Endaoment demo when real pricing is in hand.
+      </div>
+
+      <p style="margin-top:0.5rem;">
+        <span class="meta-pill" style="background:var(--gray-100);border-radius:999px;padding:0.3rem 0.85rem;font-size:0.8rem;font-weight:600;display:inline-flex;align-items:center;gap:0.4rem;">
+          📊 <a href="https://docs.google.com/spreadsheets/d/1fO9JfhhD7hWpix_ZelxkLKWKTDSqPHObCtODJs2dLQ8/edit" target="_blank" style="color:var(--purple);text-decoration:underline;">Full 50-state registration data</a>
+        </span>
+      </p>
+
+    </div>
+  </div>
+
   <!-- ── User & Money Narrative ── -->
   <div>
     <div class="section-label">How It Works — User Flow & Money</div>
@@ -942,7 +1063,7 @@
     </div>
   </div>
 
-  <div class="updated">Dashboard updated March 26, 2026 · Updated each session as work progresses</div>
+  <div class="updated">Dashboard updated April 19, 2026 · Updated each session as work progresses</div>
 
 </main>
 
