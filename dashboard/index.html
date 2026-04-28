@@ -291,7 +291,7 @@
     <div class="header-meta">
       <div class="meta-pill">📱 <a href="https://bpangman.github.io/pocketcache/" target="_blank">Live App (v2)</a></div>
       <div class="meta-pill">💻 <a href="https://github.com/bpangman/pocketcache" target="_blank">GitHub Repo</a></div>
-      <div class="meta-pill">📋 Last updated: <span id="last-updated">April 19, 2026</span></div>
+      <div class="meta-pill">📋 Last updated: <span id="last-updated">April 28, 2026</span></div>
     </div>
   </div>
 </header>
@@ -325,6 +325,43 @@
       <div class="status-card">
         <div class="label">Production-Ready</div>
         <div class="value"><span class="dot red"></span> Not yet</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Next Actions ── -->
+  <div>
+    <div class="section-label">Next Actions</div>
+    <div class="card" style="border-left:4px solid var(--purple);">
+      <div class="checklist">
+        <div class="check-item">
+          <div class="check-icon pending">!</div>
+          <div class="check-text">
+            <div class="title">Book Copilevitz Lam &amp; Raney (CLR) consultation <span class="tag todo">Highest leverage</span></div>
+            <div class="sub">Both vendors recommend CLR for charitable solicitation and CA CFP questions. ~$500&ndash;$1,500. Website: <a href="https://clrkc.com" target="_blank" style="color:var(--purple);">clrkc.com</a>. Single highest-leverage call before committing to any vendor.</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon pending">!</div>
+          <div class="check-text">
+            <div class="title">Take Change.io follow-up call May 7</div>
+            <div class="sub">Reframe the ask: "Can you support a single-nonprofit BGCA pilot at a lower price tier?" Get clarity on whether the $2K/mo bundle is negotiable for single-charity integrations.</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon pending">!</div>
+          <div class="check-text">
+            <div class="title">Reply to Zach re: Endaoment TEA + SOW + Letter Agreement</div>
+            <div class="sub">Acknowledge receipt. Ask if Endaoment offers a stripped-down single-nonprofit pilot contract before the full TEA. Also: fix typo in draft — "PocketCache, Inc." should be "PocketCache, LLC".</div>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon pending">!</div>
+          <div class="check-text">
+            <div class="title">Fix typo in Endaoment draft contract</div>
+            <div class="sub">"PocketCache, Inc." &rarr; "PocketCache, LLC" before signing anything.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -387,7 +424,7 @@
           <div class="check-icon done">✓</div>
           <div class="check-text">
             <div class="title">Regulatory architecture decided</div>
-            <div class="sub">MTL → Stripe Treasury. Charitable solicitation → Endaoment DAF. PCI → Stripe Elements.</div>
+            <div class="sub">MTL &rarr; routing through DAF, never custody funds. Charitable solicitation &rarr; California CFP filing required (handled by Change OR via direct counsel/CLR). PCI &rarr; Stripe Elements.</div>
           </div>
         </div>
       </div>
@@ -409,10 +446,10 @@
         </div>
 
         <div class="check-item">
-          <div class="check-icon pending">!</div>
+          <div class="check-icon na">–</div>
           <div class="check-text">
-            <div class="title">Apply for Stripe Treasury <span class="tag todo">Action needed</span></div>
-            <div class="sub">Not self-service — requires application as a platform partner. Custom pricing. This is what gives you the float interest model. Contact Stripe directly.</div>
+            <div class="title">Stripe Treasury <span class="tag" style="background:var(--gray-100);color:var(--gray-500);">Ruled out</span></div>
+            <div class="sub">Treasury was ruled out — Stripe Connect destination charges are the preferred architecture. PocketCache never custodies funds, so Treasury's float model is not applicable.</div>
           </div>
         </div>
 
@@ -564,6 +601,131 @@
             <div class="sub">Charitable solicitation burden stays with PocketCache (previously assumed covered) · custom infrastructure costs unquantified</div>
           </div>
         </div>
+      </div>
+
+      <!-- Change.io -->
+      <div style="border:1px solid var(--gray-200);border-radius:10px;padding:1rem 1.25rem;margin-top:.75rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
+          <span class="dot amber"></span>
+          <strong style="font-size:1rem;">Change.io</strong>
+          <span style="color:var(--gray-500);font-size:.85rem;">via Our Change Foundation (501c3 DAF)</span>
+          <span class="tag todo" style="margin-left:auto;">Discovery complete</span>
+        </div>
+
+        <div class="check-item" style="margin-bottom:.4rem;">
+          <div class="check-text">
+            <div class="title" style="font-size:.85rem;color:var(--gray-500);font-weight:500;">Status</div>
+            <div class="sub">Discovery call complete 4/27. Follow-up call May 7. No commitment yet.</div>
+          </div>
+        </div>
+
+        <div class="check-item" style="margin-bottom:.4rem;">
+          <div class="check-text">
+            <div class="title" style="font-size:.85rem;color:var(--gray-500);font-weight:500;">Effective per-donation fee</div>
+            <div class="sub"><strong>2.49%</strong> (Plus tier) — comes out of donation</div>
+          </div>
+        </div>
+
+        <div class="check-item" style="margin-bottom:.4rem;">
+          <div class="check-text">
+            <div class="title" style="font-size:.85rem;color:var(--gray-500);font-weight:500;">Setup cost</div>
+            <div class="sub">$0</div>
+          </div>
+        </div>
+
+        <div class="check-item" style="margin-bottom:.4rem;">
+          <div class="check-text">
+            <div class="title" style="font-size:.85rem;color:var(--gray-500);font-weight:500;">Recurring monthly cost (all-in for full compliance)</div>
+            <div class="sub"><strong>~$2,000/mo</strong> = Plus $999 + Stripe Connect support $500 + California CFP filing $500. Annual commitment required.</div>
+          </div>
+        </div>
+
+        <div class="check-item" style="margin-bottom:.4rem;">
+          <div class="check-text">
+            <div class="title" style="font-size:.85rem;color:var(--gray-500);font-weight:500;">Integration</div>
+            <div class="sub">Stripe Connect destination charges (preferred) OR sweep mode (cheaper but PocketCache holds funds — regulatory risk, do not use)</div>
+          </div>
+        </div>
+
+        <div class="check-item" style="margin-bottom:.4rem;">
+          <div class="check-text">
+            <div class="title" style="font-size:.85rem;color:var(--gray-500);font-weight:500;">Tax receipts</div>
+            <div class="sub">PocketCache sends via Stripe email; Change provides template copy</div>
+          </div>
+        </div>
+
+        <div class="check-item" style="margin-bottom:.4rem;">
+          <div class="check-text">
+            <div class="title" style="font-size:.85rem;color:var(--gray-500);font-weight:500;">State charitable solicitation</div>
+            <div class="sub">California Charitable Fundraising Platform handled end-to-end ($500/mo includes attorney review and filings). Professional fundraiser path NOT covered — and explicitly recommended against by both vendors.</div>
+          </div>
+        </div>
+
+        <div class="check-item" style="margin-bottom:.4rem;">
+          <div class="check-text">
+            <div class="title" style="font-size:.85rem;color:var(--gray-500);font-weight:500;">Nonprofit coverage</div>
+            <div class="sub">1.3M pre-vetted directory + international</div>
+          </div>
+        </div>
+
+        <div class="check-item" style="margin-bottom:.4rem;">
+          <div class="check-text">
+            <div class="title" style="font-size:.85rem;color:var(--gray-500);font-weight:500;">Reference customer</div>
+            <div class="sub">RoundUp.org — registered professional fundraiser, launched July 2025 in &lt;2 months</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.75rem;">
+          <div style="background:var(--green-light);border-radius:8px;padding:.75rem;">
+            <div style="font-weight:600;color:var(--green);font-size:.8rem;margin-bottom:.4rem;">Pros</div>
+            <div class="sub">$0 setup · CA CFP compliance bundled · purpose-built for round-ups · fast launch (&lt;2 months per reference) · 1.3M nonprofit directory</div>
+          </div>
+          <div style="background:var(--red-light,#fff1f2);border-radius:8px;padding:.75rem;">
+            <div style="font-weight:600;color:var(--red,#e11d48);font-size:.8rem;margin-bottom:.4rem;">Cons</div>
+            <div class="sub">Annual commitment required · ~$2K/mo fixed cost regardless of volume · CA CFP only (not full 41-state) · PocketCache issues tax receipts (more work)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Recommended Path Forward ── -->
+  <div>
+    <div class="section-label">Recommended Path Forward</div>
+
+    <div class="card" style="border-left:4px solid var(--green);margin-bottom:.75rem;">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
+        <span class="tag done" style="font-size:.75rem;padding:.25rem .6rem;">Phase 1</span>
+        <strong style="font-size:1rem;">Next 60&ndash;90 days: BGCA-only, no DAF</strong>
+        <span class="tag done" style="margin-left:auto;">Start here</span>
+      </div>
+      <div class="narrative" style="font-size:.875rem;">
+        <p>Strip the multi-nonprofit picker. Build a BGCA-only flow. Money flows <strong>donor &rarr; BGCA's own Stripe directly</strong>. BGCA issues tax receipts as the 501(c)(3) recipient.</p>
+        <p>PocketCache acts as a <strong>tech vendor</strong> and charges BGCA a flat SaaS fee (~$2K&ndash;$5K/mo recommended). No California CFP filing needed under a single-nonprofit framing — confirm with CLR before launch.</p>
+        <p style="margin-bottom:0;"><strong>Real revenue in weeks.</strong> Anchor case study for Phase 2.</p>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--amber);margin-bottom:.75rem;">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
+        <span class="tag todo" style="font-size:.75rem;padding:.25rem .6rem;">Phase 2</span>
+        <strong style="font-size:1rem;">3&ndash;9 months: Embeddable widget for nonprofit donate pages</strong>
+      </div>
+      <div class="narrative" style="font-size:.875rem;">
+        <p>Productize as a JS embed; nonprofits drop it into their existing donate pages. Each integration = single-charity flow, money flows direct to that charity's Stripe. PocketCache never custodies.</p>
+        <p>B2B SaaS: <strong>$499&ndash;$999/mo per nonprofit + small transaction fee</strong>. This is the Givebutter / Donorbox playbook, but purpose-built for round-ups.</p>
+        <p style="margin-bottom:0;">Validate demand before adding DAF complexity.</p>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--gray-400);">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
+        <span class="tag" style="font-size:.75rem;padding:.25rem .6rem;background:var(--gray-100);color:var(--gray-500);">Phase 3</span>
+        <strong style="font-size:1rem;">9&ndash;18 months: Multi-nonprofit DAF marketplace <em>(only if Phase 2 works)</em></strong>
+      </div>
+      <div class="narrative" style="font-size:.875rem;">
+        <p>Add the "donor picks any nonprofit" experience backed by Endaoment or Change. Choose vendor based on volume math: <strong>Endaoment if &gt;$30K/mo donations, Change if &lt;$30K/mo or speed matters</strong>.</p>
+        <p style="margin-bottom:0;">File California CFP at this point. Do not file early.</p>
       </div>
     </div>
   </div>
@@ -843,6 +1005,63 @@
     </div>
   </div>
 
+  <!-- ── Volume Crossover Math ── -->
+  <div>
+    <div class="section-label">Volume Crossover Math</div>
+    <div class="card">
+      <p style="margin:0 0 1rem;font-size:.875rem;">All-in monthly cost comparison at different donation volumes. Custom build amortized 24 months at $50K midpoint = $2,083/mo.</p>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Monthly donation volume</th>
+            <th>Endaoment all-in</th>
+            <th>Change all-in</th>
+            <th>Winner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>$1K</td>
+            <td>$2,098</td>
+            <td>$2,025</td>
+            <td style="color:var(--amber);font-weight:700;">Change (barely)</td>
+          </tr>
+          <tr>
+            <td>$10K</td>
+            <td>$2,233</td>
+            <td>$2,249</td>
+            <td style="color:var(--gray-500);font-weight:700;">Tie</td>
+          </tr>
+          <tr>
+            <td>$30K</td>
+            <td>$2,533</td>
+            <td>$2,747</td>
+            <td style="color:var(--green);font-weight:700;">Endaoment</td>
+          </tr>
+          <tr>
+            <td>$100K</td>
+            <td>$3,583</td>
+            <td>$4,490</td>
+            <td style="color:var(--green);font-weight:700;">Endaoment by ~$900/mo</td>
+          </tr>
+          <tr>
+            <td>$500K</td>
+            <td>$9,583</td>
+            <td>$14,450</td>
+            <td style="color:var(--green);font-weight:700;">Endaoment by ~$5K/mo</td>
+          </tr>
+          <tr>
+            <td>$1M</td>
+            <td>$17,083</td>
+            <td>$26,900</td>
+            <td style="color:var(--green);font-weight:700;">Endaoment by ~$10K/mo</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.78rem;color:var(--gray-500);margin-top:.75rem;">Crossover is ~$15K&ndash;$30K/mo donation volume. Negotiating Endaoment's onboarding fee down to $15K&ndash;$25K (Zach said "definitely negotiable") would shift the crossover to day one.</p>
+    </div>
+  </div>
+
   <!-- ── Fee Model Analysis ── -->
   <div>
     <div class="section-label">Fee Model Analysis</div>
@@ -1098,14 +1317,11 @@
         <div class="line"><span>Stripe ACH processing fee (0.8%)</span><span>−$0.19</span></div>
         <div class="line"><span>PocketCache platform fee (5% of $23.80)</span><span>−$1.19</span></div>
         <div class="line"><span>PocketCache net revenue (~$1.00 after Stripe)</span><span></span></div>
-        <div class="line divider"><span>Moves into Stripe Treasury</span><span>$22.61</span></div>
+        <div class="line divider"><span>Routed to DAF via Stripe Connect destination charge</span><span>$22.61</span></div>
       </div>
 
-      <div class="step-header">The float period</div>
-      <p>$22.61 sits in your Stripe Treasury account earning interest while you accumulate a full quarter of donations from all users. This is where PocketCache earns float income on top of platform fees.</p>
-
-      <div class="step-header">End of quarter — disbursement</div>
-      <p>PocketCache sweeps the quarter's accumulated funds to Endaoment via their API. Say Blake donated ~$22/month — that's ~$67 for the quarter. Endaoment receives it and grants it directly to Boys &amp; Girls Club. Endaoment emails Blake a tax receipt automatically. Their ~1.5% annual fee on the ~45-day hold comes to roughly $0.13 — negligible.</p>
+      <div class="step-header">Disbursement — no sweep needed</div>
+      <p>Via Stripe Connect destination charges, $22.61 flows directly to the DAF's connected account at the moment of each monthly charge. PocketCache never holds the donation funds. The DAF disburses to Boys &amp; Girls Club and issues Blake a tax receipt automatically (Endaoment) or via a Stripe-triggered email (Change).</p>
 
       <div class="step-header">What Blake experienced</div>
       <p>One monthly charge on his bank statement. One quarterly tax receipt. His Chase Visa was never charged. He never had to think about it.</p>
@@ -1159,15 +1375,15 @@
           <div class="reg-title">💸 Money Transmission Licenses (MTL)</div>
           <span class="tag done">Solved</span>
         </div>
-        <div class="reg-body">Stripe Treasury holds all required state MTLs. PocketCache is a platform customer, not a money transmitter. No licensing needed on our end.</div>
+        <div class="reg-body">Stripe Connect destination charges route donations directly to the DAF — PocketCache never custodies funds, so it is not a money transmitter. No MTL needed.</div>
       </div>
 
       <div class="reg-item">
         <div class="reg-header">
           <div class="reg-title">📜 Charitable Solicitation Registration</div>
-          <span class="tag done">Solved</span>
+          <span class="tag blocked">Open — corrected 4/27</span>
         </div>
-        <div class="reg-body">Endaoment's DAF model handles solicitation registration across all ~41 states that require it. As the intermediary 501(c)(3), they're the one soliciting — not PocketCache.</div>
+        <div class="reg-body"><strong>CORRECTED 4/27:</strong> Endaoment's 501(c)(3) status does NOT extend to PocketCache for state charitable solicitation registration (confirmed by Zach 4/8 and 4/27). Two distinct registration tracks exist for for-profit platforms: (1) the heavy "professional fundraiser" 41-state path (~$20K + bonds — both vendors recommend AVOID), and (2) California Charitable Fundraising Platform — the lighter-weight path that's likely unavoidable for multi-nonprofit operators. Change.io includes the CA CFP path in their $500/mo bundle. Recommended counsel: Copilevitz Lam &amp; Raney (<a href="https://clrkc.com" target="_blank" style="color:var(--purple);">clrkc.com</a>).</div>
       </div>
 
       <div class="reg-item">
@@ -1224,17 +1440,17 @@
         </div>
       </div>
       <div class="stack-item">
-        <div class="stack-icon">🏦</div>
+        <div class="stack-icon">🔀</div>
         <div>
-          <div class="stack-name">Stripe Treasury</div>
-          <div class="stack-role">Holds collected funds between monthly sweep and quarterly Endaoment disbursement. PocketCache earns interest on the float. Stripe holds all MTLs.</div>
+          <div class="stack-name">Stripe Connect (destination charges)</div>
+          <div class="stack-role">Stripe Connect destination charge — donation funds flow direct to DAF connected account, PocketCache never custodies. Eliminates MTL exposure and simplifies backend.</div>
         </div>
       </div>
       <div class="stack-item">
         <div class="stack-icon">🏛</div>
         <div>
           <div class="stack-name">Endaoment</div>
-          <div class="stack-role">Registered 501(c)(3) donor-advised fund. Receives quarterly disbursements and grants to nonprofits. Handles charitable solicitation registration. Issues tax receipts automatically.</div>
+          <div class="stack-role">Registered 501(c)(3) donor-advised fund. Receives disbursements and grants to nonprofits. Issues tax receipts automatically. Does NOT cover PocketCache's charitable solicitation registration (confirmed 4/27).</div>
         </div>
       </div>
       <div class="stack-item">
@@ -1271,7 +1487,7 @@
         <div class="stack-icon">📅</div>
         <div>
           <div class="stack-name">Quarterly job — Jan 1, Apr 1, Jul 1, Oct 1 at 8am</div>
-          <div class="stack-role"><code>quarterly-sweep.js</code> — Gets Treasury balance, initiates ACH OutboundTransfer to Endaoment bank, submits grants via Endaoment API proportionally per nonprofit. Endaoment sends tax receipts to users.</div>
+          <div class="stack-role">Stripe Connect routes the donation portion of each charge directly to the DAF (Endaoment or Change) via destination charge with application_fee. DAF disburses to the chosen nonprofit. Tax receipt issued automatically (Endaoment) or via templated Stripe email (Change). No backend sweep needed.</div>
         </div>
       </div>
       <div class="stack-item">
@@ -1305,7 +1521,7 @@
     </div>
   </div>
 
-  <div class="updated">Dashboard updated April 19, 2026 · Updated each session as work progresses</div>
+  <div class="updated">Dashboard updated April 28, 2026 · Updated each session as work progresses</div>
 
 </main>
 
